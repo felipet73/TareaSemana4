@@ -2,8 +2,7 @@ Tarea de Aplicaciones WEB Semana 4
 
 Realizado por Felipe Torres L.
 
-Creando 6 modelos y migraciones (sql server)
-Usuarios
+Creando 5 entidades con sus modelos y migraciones (sql server)
 Clientes
 Proveedores
 Productos
