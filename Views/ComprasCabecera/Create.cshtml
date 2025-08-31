@@ -10,7 +10,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+       @*  <form asp-action="Create"> *@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="FechaCompra" class="control-label"></label>
@@ -71,10 +71,19 @@
                     <input class="form-check-input" asp-for="isDelete" /> @Html.DisplayNameFor(model => model.isDelete)
                 </label>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+
+
+        <button type="button" id="addProduct" class="btn-add"
+                data-bs-toggle="modal" data-bs-target="#modalProductos"
+                onclick="Lista_Productos()">
+            + Agregar Producto
+        </button>
+
+        <!-- Botón de enviar -->
+        <div class="form-group">
+            <button onclick="crear_venta()" class="btn-submit">Guardar Compra</button>
+        </div>
+        @* </form> *@
     </div>
 </div>
 
@@ -85,3 +94,31 @@
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
+
+<div class="modal fade" id="modalProductos" tabindex="-1" aria-labelledby="Productos" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agrager Prodcuctos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre Producto</th>
+                            <th>Precio Venta</th>
+                            <th>Cantidad</th>
+                            <th>Agregar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="Lista_prodcutos"></tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
